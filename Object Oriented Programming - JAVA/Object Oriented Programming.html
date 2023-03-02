@@ -1,0 +1,1060 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Object Oriented Programming</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="43f65901-d586-4f91-9a17-8ac3267d62c6" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/gradients_2.png" style="object-position:center 19.999999999999996%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="Object%20Oriented%20Programming%2043f65901d5864f919a178ac3267d62c6/0_goJuBKoyL-zZX4RB.png"/></div><h1 class="page-title">Object Oriented Programming</h1></header><div class="page-body"><h1 id="d5aa3642-88c1-4191-9b4f-f6b2b2f06706" class=""><mark class="highlight-pink"><strong>Why OOP?</strong></mark></h1><ul id="48b11a4f-2573-42b8-819c-1eb359f9a44c" class="bulleted-list"><li style="list-style-type:disc">Allows breakdown large programs to small chunks. </li></ul><ul id="62843934-1b8e-423d-9633-8da75479ab0c" class="bulleted-list"><li style="list-style-type:disc">OOP Systems can easily upgradable.</li></ul><ul id="6c3871c3-78fa-444d-b340-3658557d2848" class="bulleted-list"><li style="list-style-type:disc">Less maintenance cost.<ul id="09e70ce5-5d81-4d0b-8926-17d70359cf87" class="bulleted-list"><li style="list-style-type:circle"><em>Break the program into small parts </em><strong><em>(OBJECTS)</em></strong><em> and call in the main file (</em><code><em>method</em></code><em>). Because of this method can easily upgrade and easily remove existing parts as well.</em></li></ul><p id="a45f579f-a260-469d-bb94-86b494ba1657" class="">
+</p><p id="adaf23e9-0e1d-4710-93a3-fe4afc9e297e" class=""><mark class="highlight-teal"><strong>Disadvantages of OOP</strong></mark></p><ol type="1" id="12fc13ba-2734-4b08-b717-6a9bec7f2d69" class="numbered-list" start="1"><li>Need to have brilliant designing skill and programming skill.</li></ol><ol type="1" id="16b74d1b-6625-4010-955b-663fdaa49cf7" class="numbered-list" start="2"><li>The length of the programmes developed using OOP language is much larger than the procedural approach. </li></ol></li></ul><h1 id="ee2f86cf-6174-405e-ad01-f53a402fdcc2" class=""><mark class="highlight-pink"><strong>Standards</strong></mark></h1><pre id="4c976a60-e11f-468b-8ee3-727e27e88f9c" class="code"><code>//Class Name
+Person //--first letter capital
+
+//Variable
+person //--first letter simple
+
+//Method
+person()  //--first letter simple with last brackets</code></pre><h3 id="dbbce4a1-368c-4517-b43a-fc5db1411241" class=""><strong><mark class="highlight-teal">Dot Operator</mark></strong></h3><p id="f8c697d9-7428-430e-b6af-470683a03096" class="">Always means the “<mark class="highlight-blue"><strong>inside</strong></mark>” meaning from dot operator</p><pre id="cac5ce80-ea3d-4b24-a4fe-d8806efe0864" class="code"><code>System.out.println();</code></pre><p id="bac6ba6b-8189-403e-a5d9-58b3fb0e2f0e" class=""><strong>Meaning of above :</strong> <strong><code>System</code></strong> class —&gt; <strong><code>out</code></strong> variable —&gt; <strong><code>println()</code></strong> method</p><pre id="e6649791-e699-4813-9e4b-91b567557428" class="code"><code>System.exit();  //exit method inside System class
+Person.name;    //name variable value inside System class</code></pre><h1 id="74063b40-f1c2-4fad-9215-db01a101d0eb" class=""><mark class="highlight-pink"><strong>Concepts</strong></mark></h1><ul id="aaf82a61-95b2-4c42-8524-2a69243e2b6a" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Classes and Objects</strong></mark></summary><table id="7b36aa3b-5677-4bab-9f8a-4f1f5a3d9fc8" class="simple-table"><thead class="simple-table-header"><tr id="fd63c95c-6aa0-4b28-9bba-786f1b1cf07c"><th id="~[vN" class="block-color-teal_background simple-table-header"><strong>Class</strong></th><th id="VS}M" class="block-color-teal_background simple-table-header">Object</th></tr></thead><tbody><tr id="17e1e176-77d8-4844-89d8-52261833586a"><td id="~[vN" class="">Template for creating objects (<mark class="highlight-blue"><strong>Blueprint</strong></mark>)</td><td id="VS}M" class="">Object is instance of a class</td></tr><tr id="33ee9c31-e628-4b8a-a395-a4ed94aec402"><td id="~[vN" class="">Logical Entity</td><td id="VS}M" class="">Physical Entity</td></tr><tr id="d66ad5c3-89de-4e77-a407-0e421e57966e"><td id="~[vN" class=""><em>Ex: Car</em></td><td id="VS}M" class=""><em>Ex: BMW, Audi</em></td></tr><tr id="f4aa51ab-dc36-470d-bf6c-1821f0f9c80b"><td id="~[vN" class="">Class generate objects</td><td id="VS}M" class="">Object provide life to class</td></tr><tr id="3922d08d-8022-42b7-a692-114d805635f3"><td id="~[vN" class="">Can’t manipulated</td><td id="VS}M" class="">Can manipulated</td></tr></tbody></table><figure id="cb65f556-f554-4e0e-b91c-f16e0a0f2de0" class="image" style="text-align:left"><a href="Object%20Oriented%20Programming%2043f65901d5864f919a178ac3267d62c6/download.png"><img style="width:308px" src="Object%20Oriented%20Programming%2043f65901d5864f919a178ac3267d62c6/download.png"/></a></figure><p id="27c53c5c-91be-4d7d-9dfd-27e005d79a1b" class="">
+</p><pre id="d19ae54e-4c40-4178-9d09-a4e1713c8df5" class="code"><code>public class Car {
+    String color;
+    int seats;
+    int doors;
+    
+    void drive() {
+        // do something
+    }
+    
+    void reverse() {
+        // do something
+    }
+    
+    void park() {
+        // do something
+    }
+}</code></pre><pre id="ad41fb92-741c-4b43-a2c0-94378bcd3771" class="code"><code>public class Main {
+    public static void main(String[] args) {
+        
+        //========== Car 01 ==========
+        Car car01 = new Car();
+        
+        car01.color = &quot;Black&quot;;
+        car01.seats = 5;
+        car01.doors = 4;
+        
+        car01.drive();
+        car01.reverse();
+        car01.park();
+        //========== Car 01 ==========
+        
+        
+        //========== Car 02 ==========
+        Car car02 = new Car();
+        
+        car02.color = &quot;Blue&quot;;
+        car02.seats = 4;
+        car02.doors = 2;
+        
+        car02.drive();
+        car02.reverse();
+        car02.park();
+        //========== Car 01 ==========
+    }
+}</code></pre><p id="879a5b7e-e246-4c1e-814d-be9bd3d331d8" class="">
+</p></details></li></ul><ul id="193ec517-52e4-4daf-81ce-ee0e222f54a5" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Constructor</strong></mark></summary><p id="777b14e9-31c2-498c-b82f-ce1ddf7af2c5" class="">Constructor is a special method. </p><p id="0346f833-b605-4688-8e05-15185b2dd730" class=""><strong>Properties of Constructor</strong><div class="indented"><ul id="56a2a01d-87cd-46a2-9a6b-a36d3307a307" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal_background">Implement in same name as class.</mark></li></ul><ul id="c40074d5-d54a-4c53-8f01-742d0f129ded" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal_background">No return type.</mark></li></ul><ul id="cd780adc-ec1d-49c8-80b6-519cfbc53035" class="bulleted-list"><li style="list-style-type:disc"><mark class="highlight-teal_background">Can call only, when the object is implementing.</mark></li></ul></div></p><p id="48fec76d-73f6-4e8a-a5ab-e00fd5f56b32" class=""><mark class="highlight-orange"><strong>Why Constructor?</strong></mark></p><p id="8b1303f1-d2f9-4e8c-9805-98ab86abb12b" class="">If there is something to do when the program is started, can do those things inside the constructor method.</p><pre id="5685c170-18ef-4d3b-b05a-86b0b5dc5bee" class="code"><code>public class Run {
+    // Constructor
+    Run() {
+        // Connect to internet
+        // Connect to database
+        // Create views
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+				// Call from Run Class
+        Run controller = new Run();
+    }
+}</code></pre><pre id="b3cef905-1822-44ed-bc0d-2dbbf4d43db0" class="code"><code>public class Run {
+    // Constructor
+    Run(int doc) {
+        // Connect to internet
+        // Connect to database
+        // Create views
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Call from Run class
+        Run controller = new Run(30);
+    }
+}</code></pre><p id="9c83c5c6-ad60-48c5-8d15-86476d750a5d" class="">
+</p><p id="073357c1-d46d-4c85-8451-2d31a818abc7" class=""><mark class="highlight-blue"><strong>Let’s see the standard way of using constructor.</strong></mark></p><pre id="337bd3da-bbe3-466b-81da-169dc540bb4a" class="code"><code>public class Car {
+    private String color;
+    private int seats;
+    private int doors;
+    
+		// Constructor 
+    Car(String color, int seats, int doors) {
+        this.color = color;
+        this.seats = seats;
+        this.doors = doors;
+    }
+    
+    void drive() {
+        // do something
+    }
+    
+    void reverse() {
+        // do something
+    }
+    
+    void park() {
+        // do something
+    }
+}</code></pre><pre id="b08974ac-68cc-4bfe-b355-455df9b12364" class="code"><code>public class Main {
+    public static void main(String[] args) {
+        
+        //========== Car 01 ==========
+        Car car01 = new Car(&quot;Black&quot;,5,4);
+
+        car01.drive();
+        car01.reverse();
+        car01.park();
+        //========== Car 01 ==========
+        
+        
+        //========== Car 02 ==========
+        Car car02 = new Car(&quot;Blue&quot;,4,2);
+        
+        car02.drive();
+        car02.reverse();
+        car02.park();
+        //========== Car 01 ==========
+    }
+}</code></pre><p id="0bb70cc9-0c3c-40f2-bc23-cff75f67bd8d" class="">
+</p></details></li></ul><ul id="b381ec76-2733-45b8-9cc9-1cdf80ca518b" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Method Overloading</strong></mark></summary><p id="a4062891-396f-4019-acc6-23c4d68d7697" class="">Compile doesn’t allow to create two methods with same name and same parameters (<mark class="highlight-yellow"><em><strong>Inside same class</strong></em></mark>). To overcome this, can create multiple methods with different parameters.</p><pre id="e93fc408-7d7f-4342-9c21-e044dd223bf4" class="code"><code>		public static void summation() {
+        // method 01
+        // do something
+    }
+    public static void summation(int x) {
+        // method 02
+        // do something
+    }
+    
+    public static void main(String[] args) {
+        summation();      // call to method 01
+        summation(12);    // call to method 02
+    }</code></pre><p id="1cf509c9-ab32-4557-941d-63915304ebb8" class="">
+</p></details></li></ul><ul id="22ed4bf1-1b79-4d25-a861-ffa95f34873b" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Inheritance</strong></mark></summary><p id="9b54acca-0963-4a5f-9263-c49d5f7fbacb" class=""><mark class="highlight-blue"><strong>Inheritance:</strong></mark> <strong>පරම්පරාවෙන් ලැබෙන උරුමය</strong></p><p id="5f423586-e64f-496d-9bb4-569ca577d8db" class="">Giving the methods of one class to another class and doing something improved from it.</p><figure id="28fa852f-d29e-471c-b3f3-9d1eedc4b5be" class="image"><a href="Object%20Oriented%20Programming%2043f65901d5864f919a178ac3267d62c6/inheritance2_60.png"><img style="width:565px" src="Object%20Oriented%20Programming%2043f65901d5864f919a178ac3267d62c6/inheritance2_60.png"/></a></figure><p id="bc752e65-f9fa-4ab4-855f-0c8e5925288a" class="">
+</p><p id="1aea31ac-c8f0-4b5a-b743-6c1327cb9cb3" class="">Here, <code><strong>Vehicle</strong></code><strong> class is super class</strong> and <code><strong>Bus</strong></code><strong>, </strong><code><strong>Car</strong></code><strong>, </strong><code><strong>Truck</strong></code><strong> classes are sub classes</strong>. </p><table id="b039638f-2a21-43c8-967c-ce750b6aaabb" class="simple-table"><thead class="simple-table-header"><tr id="1f4d0dde-779f-4235-b1bf-6ef0643970f6"><th id="]ynk" class="block-color-teal_background simple-table-header">Super Class</th><th id="rOmW" class="block-color-teal_background simple-table-header">Sub Classes</th></tr></thead><tbody><tr id="3330b6e3-665d-4530-a64d-d2d67bef6a77"><td id="]ynk" class=""><code>Vehicle</code></td><td id="rOmW" class=""><code>Bus</code></td></tr><tr id="ecc79a62-8455-435b-878c-418ad6d4effa"><td id="]ynk" class=""></td><td id="rOmW" class=""><code>Car</code></td></tr><tr id="54b4385a-7b70-43f8-a40d-6d296be844a8"><td id="]ynk" class=""></td><td id="rOmW" class=""><code>Truck</code></td></tr></tbody></table><p id="59193019-fc7a-43f9-80c0-a90be77d9c1e" class="">Sub classes also have all methods in <strong><code>Vehicle</code></strong> super class.</p><p id="ac86ce0b-6b25-4f6b-b608-48cd5f5a21d8" class="">Also can add new methods and attributes to sub classes as well.</p><pre id="a060d8ac-bb57-47c7-98ab-7b8415371eec" class="code"><code>class Car {
+		String ABSBreakSystem;
+
+		gpsSystem(){}
+		reverseCamera(){}
+		autoDriving(){}
+}</code></pre><p id="e6ddb25b-c736-46e6-af91-4991ca079894" class="">
+</p><p id="c3f40019-fd61-47fc-abcb-a2bb7d18086c" class=""><mark class="highlight-blue"><strong>Standard Inheritance in Coding</strong></mark></p><pre id="49d42d35-02b4-4eca-8f81-a1532bc085a5" class="code"><code>// SUPER CLASS : Having generic elements
+public class Phone {
+    private String macAddress;  //--------&gt; This private varible is not visible for extended sub class (SmartPhone)
+		String brand;
+    String name;
+    
+    void call() {
+        // do something
+    }
+    
+    void sms() {
+        // do something
+    }
+}
+
+// SUB CLASS : Having specific elements
+public class SmartPhone extends Phone{
+    String wifi;
+    
+    void internet() {
+        // do something
+    }
+    
+    void camera() {
+        // do something
+    }
+}</code></pre><p id="ddba824b-226a-416a-b6d4-81535aa89089" class="">
+</p></details></li></ul><ul id="b000f77c-f6bb-4444-b8e3-2dbb5b82b930" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Access Modifiers</strong></mark></summary><table id="ffc554cd-9c40-42a7-8caf-a76570c84abf" class="simple-table"><thead class="simple-table-header"><tr id="adc971c1-4871-4e1e-89b0-d22918e32ff2"><th id="p^]Z" class="block-color-teal_background simple-table-header">Modifier</th><th id="dvIQ" class="block-color-teal_background simple-table-header">Class</th><th id="Q:MI" class="block-color-teal_background simple-table-header">Package</th><th id="ZD;Z" class="block-color-teal_background simple-table-header">Sub Class</th><th id="pgtR" class="block-color-teal_background simple-table-header">Global</th></tr></thead><tbody><tr id="ea68db67-e3e8-4af7-a954-7d45fd0a237f"><td id="p^]Z" class="">Public</td><td id="dvIQ" class=""><strong><mark class="highlight-teal">Yes</mark></strong></td><td id="Q:MI" class=""><mark class="highlight-teal"><strong>Yes</strong></mark></td><td id="ZD;Z" class=""><mark class="highlight-teal"><strong>Yes</strong></mark></td><td id="pgtR" class=""><mark class="highlight-red"><strong>No</strong></mark></td></tr><tr id="894d03c0-a858-4716-8497-07d4fa78d6b2"><td id="p^]Z" class="">Protected</td><td id="dvIQ" class=""><mark class="highlight-teal"><strong>Yes</strong></mark></td><td id="Q:MI" class=""><mark class="highlight-teal"><strong>Yes</strong></mark></td><td id="ZD;Z" class=""><strong><mark class="highlight-teal">Yes</mark></strong></td><td id="pgtR" class=""><mark class="highlight-red"><strong>No</strong></mark></td></tr><tr id="d3c360bf-4fe5-4e02-a7ac-93a04e8cc154"><td id="p^]Z" class="">Default</td><td id="dvIQ" class=""><mark class="highlight-teal"><strong>Yes</strong></mark></td><td id="Q:MI" class=""><strong><mark class="highlight-teal">Yes</mark></strong></td><td id="ZD;Z" class=""><mark class="highlight-red"><strong>No</strong></mark></td><td id="pgtR" class=""><strong><mark class="highlight-red">No</mark></strong></td></tr><tr id="dfab5ddc-afa7-475b-8058-760c7c9de460"><td id="p^]Z" class="">Private</td><td id="dvIQ" class=""><mark class="highlight-teal"><strong>Yes</strong></mark></td><td id="Q:MI" class=""><strong><mark class="highlight-red">No</mark></strong></td><td id="ZD;Z" class=""><mark class="highlight-red"><strong>No</strong></mark></td><td id="pgtR" class=""><strong><mark class="highlight-red">No</mark></strong></td></tr></tbody></table><p id="ff60b702-2ce1-41f2-aff4-2b8240fb511c" class="">
+</p></details></li></ul><ul id="20555a0b-110d-43e8-9cb5-21877e954093" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Method Overriding</strong></mark></summary><pre id="7dcdcde5-a36a-413b-b829-6633352c3bc6" class="code"><code>public class Cat {
+    public void sound() {
+        System.out.println (&quot;Meow&quot;);
+    }
+}
+
+public class Lion extends Cat {
+    public void sound() {
+        System.out.println (&quot;Roar&quot;);
+    }
+}</code></pre><p id="256c58c9-3c37-4a40-ae98-06e1e176730a" class="">Same <code><strong>sound()</strong></code> method in <code><strong>Cat</strong></code> class is override in <code><strong>Lion</strong></code> class</p><p id="0d968eb2-8be5-485d-835c-9457441b873b" class="">
+</p></details></li></ul><ul id="6ab6daea-6765-457b-96ec-46fb5bba445a" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Super Keyword</strong></mark></summary><p id="34d56137-6b1d-41e6-8826-167907b47317" class="">2 Works can be done using <code><strong>super</strong></code> keyword</p><ul id="1585bbbe-051c-4ee9-94d4-6e8f456c583d" class="bulleted-list"><li style="list-style-type:disc">Call the constructor of super class</li></ul><ul id="716620b9-c3ed-41b9-a9bd-57936b03ef22" class="bulleted-list"><li style="list-style-type:disc">Access methods and variable in super class inside sub class</li></ul><pre id="2e87950d-38d5-42e8-b88a-1ae2f0d21246" class="code"><code>// SUPER CLASS
+public class Cat {
+    String hair;
+    
+    // Default Constructor
+    Cat() {}
+    
+    public void sound() {
+        System.out.println (&quot;Meow&quot;);
+    }
+}
+
+// SUB CLASS
+public class Lion extends Cat {
+    // Call to super class variable
+    String hair = super.hair;
+    
+    // Default Constructor
+    Lion() {}
+    
+    public void sound() {
+        // Call to super class method
+        super.sound();
+        System.out.println (&quot;Roar&quot;);
+    }
+}</code></pre><p id="a6a61d88-ccaa-4428-a03d-902aa060e4b5" class="">
+</p></details></li></ul><ul id="687d08f9-85d9-4415-b68e-26c7ee02ef17" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Upcasting &amp; Downcasting</strong></mark></summary><p id="2d72019a-b5ce-4a5a-9d3a-a43124ee6adb" class=""><mark class="highlight-pink"><strong>Upcasting</strong></mark></p><p id="4b3a448a-79e9-4953-ab8f-12e31675bacc" class="">Process of applying subclass variable to superclass variable <em><strong>(Bigger ← Smaller)</strong></em></p><pre id="ac0fa31c-8c76-4157-bf3c-302be78762b0" class="code code-wrap"><code>int x = 5;
+long y = 55;
+
+x = y; // Error: Because long is bigger type than int
+y = x; // possible</code></pre><pre id="5349a54b-5344-447b-95e3-2e3e6ffbe53c" class="code code-wrap"><code>class A{}
+class B extends A{}
+
+class Main{
+	B objectB = new B();
+	A objectA = new A();
+
+	objectB = ObjectA; // Error: B class is smaller than A, because A is super class of B
+	objectA = objectB; // possible
+}</code></pre><p id="c347e3fc-9e0f-4f6c-be7e-d7bdac5e636e" class="">
+</p><p id="dd393536-f6a6-4e5b-b417-45fcc3cdc37b" class=""><mark class="highlight-pink"><strong>Downcasting</strong></mark></p><p id="fb95141a-e826-431e-813d-343be172d5a5" class="">Applied subclass variable to superclass convert again to subclass.</p><pre id="6f5e82ca-73c2-42be-aec6-1cedf8a9476e" class="code code-wrap"><code>class A{}
+class B extends A{}
+
+class Main{
+	B objectB = new B();
+	A objectA = new A();
+	
+	objectA = objectB; // possible
+	objectB = ObjectA; // Error: B class is smaller than A, because A is super class of B (Compiler Error)
+
+	// To avoid above error:
+	objectB = (B) ObjectA; // possible
+}</code></pre><p id="925ac3b0-d784-4abf-9550-3039abd15d18" class="">
+</p></details></li></ul><ul id="28ebe7c8-d654-4981-b4e7-87f2dca02462" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Polymorphism</strong></mark></summary><p id="09364825-5cd2-4e22-89b3-96cd89f2d932" class="">Polymorphism means &quot;<mark class="highlight-pink"><strong>many forms</strong></mark>&quot;, and it occurs when we have many classes that are related to each other by inheritance.</p><pre id="42210879-69d3-474e-a973-aa74254b6df5" class="code code-wrap"><code>class Animal {
+  public void animalSound() {
+    System.out.println(&quot;The animal makes a sound&quot;);
+  }
+}
+
+class Pig extends Animal {
+  public void animalSound() {
+    System.out.println(&quot;The pig says: wee wee&quot;);
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println(&quot;The dog says: bow wow&quot;);
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Animal myAnimal = new Animal();  // Create a Animal object
+    Animal myPig = new Pig();  // Create a Pig object
+    Animal myDog = new Dog();  // Create a Dog object
+
+    myAnimal.animalSound(); // The animal makes a sound
+    myPig.animalSound();    // The pig says: wee wee
+    myDog.animalSound();    // The dog says: bow wow
+  }
+}</code></pre><p id="3afbfdac-5fde-4333-b45c-0ccd17920771" class="">Another Example</p><pre id="e3b8ac74-4c3f-42fa-9efd-9acc2b722998" class="code code-wrap"><code>class ClassA{
+	void print(){
+		Syste.out.println(&quot;A&quot;);
+	}
+}
+
+class ClassB{
+	void print(){
+		Syste.out.println(&quot;B&quot;);
+	}
+}
+
+class Main{
+	public static void main (String[] args){
+		ClassB b = new ClassB();
+		b.print(); //print B
+
+		ClassA a = new ClassA();
+		a.print(); //print A
+
+		//upcasting
+		ClassA a1 = new ClassB();
+		a1.print(); //print B
+	}
+}</code></pre><p id="8800b3e3-2d03-406d-bf44-29addeba3d66" class="">
+</p></details></li></ul><ul id="e99b7a02-bccc-493d-9cdd-5f741a8ee1fb" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Abstraction</strong></mark></summary><p id="5f83f5d3-aac5-4841-9138-bca75e719eac" class=""><mark class="highlight-pink"><strong>Abstract Method</strong></mark> → Method without having body</p><p id="e1a302b8-1a1b-479f-bad5-2be67cc8f2d0" class="">Need <mark class="highlight-pink"><strong>Abstract Class</strong></mark> to save abstract method</p><p id="be643a02-8384-40b5-a64a-f248b6e2792f" class="">Can’t create object from abstract classes</p><p id="afc595ae-7f59-4f29-9524-86dac421f36b" class="">No constructor for abstract class: Because can’t create objects in abstract class</p><pre id="4df86c5d-3c51-4229-ac13-4592cae4a74f" class="code code-wrap"><code>abstract class Vehicle{
+	// Abstract method
+	abstract void park();
+
+	// Non-Abstract method
+	void print(){
+		System.out.println(&quot;Hello&quot;);
+	}
+}</code></pre><p id="c7915d2b-692a-41e5-abc3-581e88d93266" class=""><strong>Example</strong></p><pre id="c3c41677-2e6c-4848-ab95-a8edcc2246bf" class="code code-wrap"><code>abstract class Vehicle{
+	// Abstract method
+	abstract void park();
+}
+
+class Car extends Vehicle{
+
+}
+
+class Main{
+	Vehicle v1 = new Vehicle(); // Error: Can&#x27;t
+	Vehicle v2 = new Car();     // Possible
+}</code></pre><p id="60830e3a-f56c-4e2e-8916-88e4a76c4f5a" class=""><strong>Example 02:</strong></p><pre id="ff083283-82e1-47a5-b144-0c6409ae37c1" class="code code-wrap"><code>// Abstract class
+abstract class Animal {
+  // Abstract method (does not have a body)
+  public abstract void animalSound();
+
+  // Regular method
+  public void sleep() {
+    System.out.println(&quot;Zzz&quot;);
+  }
+}
+
+// Subclass (inherit from Animal)
+class Pig extends Animal {
+  public void animalSound() {
+    // The body of animalSound() is provided here
+    System.out.println(&quot;The pig says: wee wee&quot;);
+  }
+}
+
+class Main {
+  public static void main(String[] args) {
+    Pig myPig = new Pig(); // Create a Pig object
+    myPig.animalSound();
+    myPig.sleep();
+  }
+}
+
+================================================================
+OUTPUT: 
+The pig says: wee wee
+Zzz</code></pre><p id="881d832a-bd3a-4ae7-a6cd-9d2c369c5a15" class="">
+</p></details></li></ul><ul id="b5c4fda1-dceb-4fc0-a88f-ae4e8ad96def" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Encapsulation</strong></mark></summary><p id="afb83a87-d6fb-4c1b-97d4-1e8bdc4ecceb" class="">Protect the variables in the class. Using <strong><code>Getters &amp; Setters</code></strong></p><pre id="bcea0cfb-0d4a-4c8c-9993-950319a74aca" class="code code-wrap"><code>class Student {
+		// Private variables are not allowed outside the class
+		private int id;
+		private String name;
+	
+		// ID Getter
+		public void getId(int id){
+				// this.id = id inside student class
+				this.id = id;
+		}
+		
+		// ID Setter
+		public void setID(){
+				// return the id inside student class
+				return id;
+		}
+
+		// Name Getter
+		public void getName(int name){
+				// this.name = name inside student class
+				this.name = name;
+		}
+		
+		// Name Setter
+		public void setID(){
+				// return the name inside student class
+				return name;
+		}
+}
+
+class Main{
+		public static void main(String args[]){
+				Student s1 = new Student();
+				s1.id = 1;
+				s1.name = &quot;Root&quot;
+		}
+}</code></pre><p id="8dea26fe-6bf3-4e8a-aedf-51f14bb9ac14" class="">
+</p></details></li></ul><ul id="53474d3f-0197-40b3-8a2c-801852f77e6b" class="toggle"><li><details open=""><summary><mark class="highlight-teal"><strong>Interfaces</strong></mark></summary><p id="9461ce02-8d73-405b-9a2d-19fe22f77cec" class="">In java, <strong><em>multiple inheritance is not working</em></strong>. The solution for that is interfaces.</p><pre id="a07ef544-5f1e-4fa5-b716-d66554adc820" class="code code-wrap"><code>class Animal{}
+
+interface AnimalUI{}
+
+interface AnimalMedUI{}
+
+// Sub class 
+class ZooAnimal extends Animal implements AnimalUI, AnimalMedUI{}
+</code></pre><p id="d8e56864-5034-43e4-8cff-4b1e6812d134" class="">
+</p><p id="e16e9004-5d44-4ae0-a1c8-03b310d83870" class=""><mark class="highlight-pink"><strong>Specificatios of Interfaces</strong></mark></p><ul id="ce22bd25-ff5c-4919-8483-3cfd34909ce4" class="bulleted-list"><li style="list-style-type:disc">Can’t create objects</li></ul><ul id="188dbc6f-533f-4544-b4d4-3dd1c6270d62" class="bulleted-list"><li style="list-style-type:disc">Can’t create constructors</li></ul><ul id="abb778fd-248b-4e60-bf25-838d87d1c0b6" class="bulleted-list"><li style="list-style-type:disc">Can use sub class methods</li></ul><ul id="eb44e451-7aa6-47ca-8f64-b8a5e38dbb7d" class="bulleted-list"><li style="list-style-type:disc">No Normal methods, <mark class="highlight-blue"><em><strong>public abstract methods</strong></em></mark><em><strong> only</strong></em></li></ul><ul id="d007ab80-33af-490e-b060-f9f65c3dce19" class="bulleted-list"><li style="list-style-type:disc"><strong>Variable</strong> should be <mark class="highlight-blue"><strong><em>public static final</em></strong></mark> only.</li></ul></details></li></ul></div></article></body></html>
